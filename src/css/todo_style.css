@@ -58,6 +58,7 @@ body {
 .home_list_link {
   color: var(--swatch-boundary);
   text-decoration: none;
+  cursor: pointer;
 }
 .home_list_link:hover {
   color: var(--swatch-accent);

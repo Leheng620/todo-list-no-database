@@ -20,6 +20,7 @@ class App extends Component {
   goHome = () => {
     this.setState({currentScreen: AppScreen.HOME_SCREEN});
     this.setState({currentList: null});
+    
   }
 
   loadList = (todoListToLoad) => {
@@ -27,6 +28,12 @@ class App extends Component {
     this.setState({currentList: todoListToLoad});
     console.log("currentList: " + this.state.currentList);
     console.log("currentScreen: " + this.state.currentScreen);
+  }
+  processChangeName = (name) => {
+    this.state.currentList.name = name;
+  }
+  processChangeOwner = (owner) => {
+    this.state.currentList.owner = owner;
   }
 
   render() {
@@ -38,7 +45,9 @@ class App extends Component {
       case AppScreen.LIST_SCREEN:            
         return <ListScreen
           goHome={this.goHome.bind(this)}
-          todoList={this.state.currentList} />;
+          todoList={this.state.currentList} 
+          changeName={this.processChangeName}
+          changeOwner={this.processChangeOwner}/>;
       case AppScreen.ITEM_SCREEN:
         return <ItemScreen />;
       default:
