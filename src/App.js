@@ -14,7 +14,8 @@ class App extends Component {
   state = {
     currentScreen: AppScreen.HOME_SCREEN,
     todoLists: testTodoListData.todoLists,
-    currentList: null
+    currentList: null,
+    currentItem: null
   }
 
   goHome = () => {
@@ -26,6 +27,7 @@ class App extends Component {
   loadList = (todoListToLoad) => {
     this.setState({currentScreen: AppScreen.LIST_SCREEN});
     this.setState({currentList: todoListToLoad});
+    this.setState({currentItem: null});
     let list =  [...this.state.todoLists.filter(todo => todo.key != todoListToLoad.key)];
     for(let i = 0; i < list.length; i++){
       if(list[i].key < todoListToLoad.key){
@@ -39,16 +41,36 @@ class App extends Component {
     console.log("currentList: " + this.state.currentList);
     console.log("currentScreen: " + this.state.currentScreen);
   }
+
+  loadItem = (itemToLoad) => {
+    this.setState({currentScreen: AppScreen.ITEM_SCREEN});
+    let item;
+    if(itemToLoad == null){
+      item = {
+        "key": "0",
+        "description": "",
+        "due_date": "",
+        "assigned_to": "",
+        "completed": false
+      }
+    }else{
+      item = itemToLoad;
+    }
+    this.setState({currentItem: item});
+
+  }
   processChangeName = (name) => {
     let list = this.state.currentList;
     list.name = name;
     this.setState({currentList: list})
   }
+
   processChangeOwner = (owner) => {
     let list = this.state.currentList;
     list.owner = owner;
     this.setState({currentList: list})
   }
+
   delete = (key) => {
     let list =  [...this.state.todoLists.filter(todo => todo.key != key)]
     // for(let i = 0; i < list.length; i++){
@@ -62,11 +84,13 @@ class App extends Component {
     this.setState({todoLists: list})
     this.goHome()
   }
+
   fixKey = (list) => {
     for(let i = 0; i < list.length; i++){
       list[i].key = "" + i;
     }
   }
+
   createNewTodo = () => {
     let list = this.state.todoLists;
     let newTodo = {
@@ -80,6 +104,25 @@ class App extends Component {
     this.setState({todoLists: list})
     this.loadList(newTodo);
   }
+
+  createNewItem = () => {
+    let todoList = this.state.currentList;
+    let newItem = this.state.currentItem;
+    let descriptionT = document.getElementById("item_description_textfield");
+    newItem.description = descriptionT.value;
+    let assignedToT = document.getElementById("item_assigned_to_textfield");
+    newItem.assigned_to = assignedToT.value;
+    let dueDateT = document.getElementById("item_due_date_picker");
+    newItem.due_date = dueDateT.value;
+    let completed = document.getElementById("item_completed_checkbox")
+    newItem.completed = completed.checked;
+
+    todoList.items.push(newItem);
+    newItem.key = "" + (todoList.items.length - 1);
+    this.setState({currentList: todoList})
+    this.loadList(this.state.currentList);
+  }
+  
   render() {
     switch(this.state.currentScreen) {
       case AppScreen.HOME_SCREEN:
@@ -93,9 +136,13 @@ class App extends Component {
           todoList={this.state.currentList} 
           changeName={this.processChangeName}
           changeOwner={this.processChangeOwner}
-          delete={this.delete}/>;
+          delete={this.delete}
+          loadItem={this.loadItem.bind(this, null)}/>;
       case AppScreen.ITEM_SCREEN:
-        return <ItemScreen />;
+        return <ItemScreen 
+          todoItem={this.state.currentItem}
+          loadList={this.loadList.bind(this,this.state.currentList)}
+          createNewItem={this.createNewItem.bind(this, this.state.currentItem)}/>;
       default:
         return <div>ERROR</div>;
     }

@@ -14,10 +14,13 @@ export class ListItemsTable extends Component {
                     this.props.todoList.items.map((todoItem)=>(
                         <ListItemCard 
                             key={todoItem.key}
-                            listItem={todoItem} />
+                            listItem={todoItem} 
+                            items={this.props.todoList.items}/>
                     ))
                 }
-                
+                <button className="list_item_add_card" onClick={this.props.loadItem}> 
+                    <img src={require("../AddItem.png")} />
+                </button>
                 
             </div>
         )

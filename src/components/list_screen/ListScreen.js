@@ -78,7 +78,7 @@ export class ListScreen extends Component {
                             onChange={this.onChangeOwner}/>
                     </div>
                 </div>
-                <ListItemsTable todoList={this.props.todoList} />
+                <ListItemsTable todoList={this.props.todoList} loadItem={this.props.loadItem}/>
                 <ListDialog hide={this.hide.bind(this)} delete={this.props.delete.bind(this,this.props.todoList.key)}/>
             </div>
         )

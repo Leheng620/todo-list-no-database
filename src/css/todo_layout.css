@@ -112,17 +112,32 @@ body {
 .list_item_card_button {
   text-align: center;
   border-radius: 5px;
-  margin: 1%;
+  height: 90%;
+  margin: 0.1%;
+  position: relative;
+  left: 82%;
+  border-style: solid;
+  background-color: var(--swatch-accent);
 }
 .list_item_add_card {
   text-align: center;
   vertical-align: center;
+  left: 47%;
+  border: none;
+}
+.disabled{
+  background-color: var(--swatch-foundation);
 }
 
 /* ITEM SCREEN CONTROLS */
-#item_heading {}
+#item_heading {
+  font-weight: bold;
+  font-size: larger;
+}
 #item_form_container {
   display: grid;
+  grid-gap: 23px;
+  grid-template-columns: 20% auto;
 }
 #item_description_prompt {}
 #item_description_textfield {}
@@ -131,16 +146,35 @@ body {
 #item_due_date_prompt {}
 #item_due_date_picker {}
 #item_completed_prompt {}
-#item_completed_checkbox {}
-#item_form_submit_button {}
-#item_form_cancel_button {}
+#item_completed_checkbox {
+  right: 49.3%;
+  height: 3%;
+}
+#item_form_button{
+  padding-top: 2%;
+}
+#item_form_submit_button {
+  font-size: larger;
+  border-style: outset;
+  border-radius: 7px;
+}
+#item_form_cancel_button {
+  font-size: larger;
+  border-style: outset;
+  border-radius: 7px;
+}
 
 /* ITEM SCREEN CLASSES */
 .item_prompt {
-  grid-column: 1 / 4;
+  grid-column: 1 / 2;
+  position: relative;
+  font-weight: bold;
 }
 .item_input {
   grid-column: 2 / 4;
+  position: relative;
+  height: 30px;
+  font-size: large;
 }
 
 /* Dialog */
