@@ -49,7 +49,7 @@ body {
   left: 85%;
   width: 15%;
   text-align: right;
-  top: 5%;
+  top: 10px;
 }
 #list_details_container {
   padding-left: 2%;
@@ -141,4 +141,32 @@ body {
 }
 .item_input {
   grid-column: 2 / 4;
+}
+
+/* Dialog */
+#modal_yes_no_dialog{
+  top: 182px;
+  height: 190px;
+  z-index: 1;
+  position: absolute;
+  left: 33%;
+  background: #EED;
+  width: 33%;
+}
+#dialog_yes_button{
+  height: 26%;
+  width: 13%;
+}
+#dialog_no_button{
+  height: 26%;
+  width: 13%;
+}
+#the_block{
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  background: black;
+  top: 0;
+  opacity: 0.1;
 }

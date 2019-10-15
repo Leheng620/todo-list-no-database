@@ -331,3 +331,46 @@ font-size: 16pt;
     transform: rotate(0deg);
   }
 }
+
+/* Dialog */
+@keyframes dialog_animation_in{
+  from {left: -200%;}
+  to {left: none;}
+}
+@keyframes dialog_animation_out{
+  from {left: none;}
+  to {left: -200%;}
+}
+#modal_yes_no_dialog{
+  background-color: var(--swatch-complement);
+  border: none;
+}
+#dialog_message{
+  font-weight: bold;
+}
+.is_visible{
+  visibility: visible;
+}
+.not_visible{
+  visibility: hidden;
+}
+.animation_in{
+  animation-name: dialog_animation_in;
+  animation-duration: 0.1s;
+  animation-timing-function: cubic-bezier(.39,.58,.57,1);
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+.animation_out{
+  animation-name: dialog_animation_out;
+  animation-duration: 0.1s;
+  animation-timing-function: cubic-bezier(.39,.58,.57,1);
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
