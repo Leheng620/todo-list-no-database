@@ -30,7 +30,7 @@ export class ItemScreen extends Component {
                         <div id='item_due_date_prompt' className='item_prompt'>Due Date:</div>
                         <input type='date' id='item_due_date_picker' className="item_input" defaultValue={this.getDueDate()}/>
                         <div id='item_completed_prompt' className='item_prompt'>Completed:</div>
-                        <input type='checkbox' id='item_completed_checkbox' className="item_input" defaultValue={this.getIsCompleted()}/>
+                        <input type='checkbox' id='item_completed_checkbox' className="item_input" defaultChecked={this.getIsCompleted()}/>
                     </div>
                     <div id='item_form_button'>
                         <button id='item_form_submit_button' onClick={this.props.createNewItem}>Submit</button>

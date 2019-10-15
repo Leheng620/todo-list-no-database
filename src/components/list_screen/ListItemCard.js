@@ -22,7 +22,8 @@ export class ListItemCard extends Component {
                 </button>)
         }else{
             return (<button id={"item_card_"+this.props.listItem.key+"item_up_button"}
-            className="list_item_card_button">
+            className="list_item_card_button"
+            onClick={this.props.up.bind(this,this.props.listItem.key)}>
                 <img src={require("../Up.png")}/>
             </button>)
         }
@@ -38,14 +39,15 @@ export class ListItemCard extends Component {
             )
         }else{
             return(<button id={"item_card_"+this.props.listItem.key+"item_down_button"}
-            className="list_item_card_button">
+            className="list_item_card_button"
+            onClick={this.props.down.bind(this,this.props.listItem.key)}>
                 <img src={require("../Down.png")}/>
             </button>)
         }
     }
     render() {
         return (
-            <div className='list_item_card'>
+            <div className='list_item_card' onClick={this.props.edit.bind(this, this.props.listItem.key)}>
                 <div className='list_item_card_description'>
                     {this.props.listItem.description}
                 </div>
@@ -62,7 +64,8 @@ export class ListItemCard extends Component {
                 {this.buildDisableDownButton()}
                 
                 <button id={"item_card_"+this.props.listItem.key+"item_delete_button"}
-                className="list_item_card_button">
+                className="list_item_card_button"
+                onClick={this.props.deleteItem.bind(this,this.props.listItem.key)}>
                     <img src={require("../Close.png")}/>
                 </button>
             </div>

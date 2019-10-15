@@ -78,7 +78,16 @@ export class ListScreen extends Component {
                             onChange={this.onChangeOwner}/>
                     </div>
                 </div>
-                <ListItemsTable todoList={this.props.todoList} loadItem={this.props.loadItem}/>
+                <ListItemsTable 
+                todoList={this.props.todoList} 
+                loadItem={this.props.loadItem}
+                up={this.props.up}
+                down={this.props.down}
+                deleteItem={this.props.deleteItem}
+                edit={this.props.edit}
+                sortByTask={this.props.sortByTask}
+                sortByDuedate={this.props.sortByDuedate}
+                sortByStatus={this.props.sortByStatus}/>
                 <ListDialog hide={this.hide.bind(this)} delete={this.props.delete.bind(this,this.props.todoList.key)}/>
             </div>
         )

@@ -19,7 +19,7 @@ body {
 }
 
 /* SCREENS */
-#todo_home, #todo_list, #todo_item {
+#todo_home, #todo_list, #todo_item_edit {
   background-color: var(--swatch-primary);
 }
 #todo_list {}
