@@ -370,9 +370,11 @@ class App extends Component {
 
   windowEvent = (e) =>{
     if(e.ctrlKey && (e.keyCode == 89 || e.keyCode == 121)){
+      e.preventDefault();
       this.re();
     }
     else if(e.ctrlKey && (e.keyCode == 90 || e.keyCode == 122)){
+      e.preventDefault();
       this.un();
     }
   }

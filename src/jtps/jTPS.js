@@ -2,7 +2,7 @@
 export class jTPS{
     constructor(){
         // THE TRANSACTION STACK
-        this.transactions = new Array();
+        this.transactions = [];
         
         // KEEPS TRACK OF WHERE WE ARE IN THE STACK, THUS AFFECTING WHAT
         // TRANSACTION MAY BE DONE OR UNDONE AT ANY GIVEN TIME
