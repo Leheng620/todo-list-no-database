@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   loadList = (todoListToLoad) => {
-    window.addEventListener("keydown",this.windowEvent);  
+    window.addEventListener("keydown",this.windowEvent);
     this.setState({currentScreen: AppScreen.LIST_SCREEN});
     this.setState({currentList: todoListToLoad});
     this.setState({currentItem: null});
@@ -177,7 +177,6 @@ class App extends Component {
     let trans = new Transaction(oldList, newList, todoList);//
     let jtps = this.state.jtps;//
     jtps.addTransaction(trans);//
-    console.log(jtps.transactions);
     this.setState({jtps: jtps});//
     this.setState({currentList: todoList});
   }
@@ -303,6 +302,8 @@ class App extends Component {
   }
 
   sortByTask = () =>{
+    let todoList = this.state.currentList;
+    let oldList = JSON.parse(JSON.stringify(todoList));//
     // IF WE ARE CURRENTLY INCREASING BY TASK SWITCH TO DECREASING
     if (this.isCurrentItemSortCriteria(ItemSortCriteria.SORT_BY_TASK_INCREASING)) {
       this.sortTasks(ItemSortCriteria.SORT_BY_TASK_DECREASING);
@@ -311,18 +312,32 @@ class App extends Component {
     else {
       this.sortTasks(ItemSortCriteria.SORT_BY_TASK_INCREASING);
     }
+    let newList = JSON.parse(JSON.stringify(todoList));//
+    let trans = new Transaction(oldList, newList, todoList);//
+    let jtps = this.state.jtps;//
+    jtps.addTransaction(trans);//
+    this.setState({jtps: jtps});//
   }
 
   sortByDuedate = () => {
+    let todoList = this.state.currentList;
+    let oldList = JSON.parse(JSON.stringify(todoList));//
     if(this.isCurrentItemSortCriteria(ItemSortCriteria.SORT_BY_DUE_DATE_INCREASING)){
       this.sortTasks(ItemSortCriteria.SORT_BY_DUE_DATE_DECREASING);
     }
     else{
       this.sortTasks(ItemSortCriteria.SORT_BY_DUE_DATE_INCREASING);
     }
+    let newList = JSON.parse(JSON.stringify(todoList));//
+    let trans = new Transaction(oldList, newList, todoList);//
+    let jtps = this.state.jtps;//
+    jtps.addTransaction(trans);//
+    this.setState({jtps: jtps});//
   }
 
   sortByStatus = () => {
+    let todoList = this.state.currentList;
+    let oldList = JSON.parse(JSON.stringify(todoList));//
     // IF WE ARE CURRENTLY INCREASING BY STATUS SWITCH TO DECREASING
     if (this.isCurrentItemSortCriteria(ItemSortCriteria.SORT_BY_STATUS_INCREASING)) {
       this.sortTasks(ItemSortCriteria.SORT_BY_STATUS_DECREASING);
@@ -331,10 +346,14 @@ class App extends Component {
     else {
       this.sortTasks(ItemSortCriteria.SORT_BY_STATUS_INCREASING);
     }
+    let newList = JSON.parse(JSON.stringify(todoList));//
+    let trans = new Transaction(oldList, newList, todoList);//
+    let jtps = this.state.jtps;//
+    jtps.addTransaction(trans);//
+    this.setState({jtps: jtps});//
   }
 
   un = () => {
-    console.log("why");
     let jtps = this.state.jtps;
     let trans = jtps.peekUndo();
     let list = this.state.currentList;
