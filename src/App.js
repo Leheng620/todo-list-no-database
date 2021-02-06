@@ -52,8 +52,6 @@ class App extends Component {
     }
     todoListToLoad.key = "0";
     this.setState({todoLists: [todoListToLoad, ...list]})
-    console.log("currentList: " + this.state.currentList);
-    console.log("currentScreen: " + this.state.currentScreen);
   }
 
   loadItem = (itemToLoad) => {
